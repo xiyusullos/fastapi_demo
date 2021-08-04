@@ -1,0 +1,13 @@
+
+# fastapi
+fastapi[all]==0.68.0
+
+# python-dotenv
+python-dotenv==0.19.0
+
+# sqlalchemy
+sqlalchemy==1.4.22
+pymysql==1.0.2
+
+# sqlacodegen
+sqlacodegen==2.3.0
