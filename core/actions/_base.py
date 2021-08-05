@@ -39,7 +39,7 @@ class BaseAction(abc.ABC):
         self.init_handle()
 
     @abc.abstractmethod
-    def init_handle(self): pass
+    def init_handle(self): pass  # noqa: E704 multiple statements on one line (def)
 
     def register_action(self, router: APIRouter):
         router.add_api_route(

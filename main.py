@@ -1,12 +1,8 @@
-import os
-import logging
-
 import uvicorn
 from uvicorn import Config
 
-from core.configs import app as APP, log as LOG
-
 from core import create_app
+from core.configs import app as APP, log as LOG
 from core.utils import env
 
 app = create_app()

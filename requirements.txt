@@ -11,3 +11,6 @@ pymysql==1.0.2
 
 # sqlacodegen
 sqlacodegen==2.3.0
+
+# flake8
+flake8==2

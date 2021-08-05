@@ -1,17 +1,13 @@
-import json
 import typing
 
 from fastapi import FastAPI
+from fastapi.openapi.utils import get_openapi
 from fastapi.responses import RedirectResponse, JSONResponse
 from starlette.middleware.cors import CORSMiddleware
 
-import importlib
-
-from .resources import AVAILABLE_RESOURCES
-from .utils import env
 from .configs import app as APP
-from fastapi.openapi.utils import get_openapi
-from fastapi.openapi.models import Info
+from .resources import AVAILABLE_RESOURCES
+
 
 class MyGlobalResponse(JSONResponse):
     def render(self, content: typing.Any) -> bytes:
@@ -20,6 +16,7 @@ class MyGlobalResponse(JSONResponse):
             "data": content,
             "msg": "",
         })
+
 
 def my_openapi(app):
     def f():
@@ -51,6 +48,7 @@ def my_openapi(app):
         }
         app.openapi_schema = openapi_schema
         return app.openapi_schema
+
     return f
 
 

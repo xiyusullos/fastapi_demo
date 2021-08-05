@@ -12,7 +12,7 @@ for f in (Path(__file__).parent.glob('*.py')):
 
         try:
             AVAILABLE_RESOURCES.append(module.resource)
-        except:
+        except:  # noqa: E722 do not use bare 'except'
             pass
 
 # from core.resources.address import AddressResource

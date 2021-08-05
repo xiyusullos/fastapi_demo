@@ -1,7 +1,7 @@
 # coding=utf-8
 """Some help functions."""
 import os
-from typing import AnyStr, Union, List
+from typing import Union, List
 
 
 def snake2camel(name):
@@ -60,7 +60,8 @@ def env(env_name: str, default_value=None) -> Union[str, bool, List[str]]:
     """
     value: str = os.environ.get(env_name.strip(), default_value)
     if value is not None and isinstance(value, str):
-        if False: pass
+        if False:
+            pass
         # convert to bool
         elif value.lower() in {'true', 'on'}:
             value: bool = True
@@ -68,6 +69,6 @@ def env(env_name: str, default_value=None) -> Union[str, bool, List[str]]:
             value: bool = False
         # convert to list
         elif value.startswith('[') and value.endswith(']'):
-            value: List[str] = [str(_) for _ in  value[1:-1].strip().split(",")]
+            value: List[str] = [str(_) for _ in value[1:-1].strip().split(",")]
 
     return value
