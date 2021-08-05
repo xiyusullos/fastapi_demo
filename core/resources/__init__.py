@@ -15,8 +15,14 @@ for f in (Path(__file__).parent.glob('*.py')):
         except:  # noqa: E722 do not use bare 'except'
             pass
 
+
 # from core.resources.address import AddressResource
 #
 # AVAILABLE_RESOURCES = [
 #     AddressResource,
 # ]
+
+
+def register_resources(app):
+    for resource in AVAILABLE_RESOURCES:
+        app.include_router(resource.router)

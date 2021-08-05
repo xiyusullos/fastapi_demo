@@ -1,4 +1,4 @@
-import typing
+import typing as tp
 
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
@@ -6,16 +6,9 @@ from fastapi.responses import RedirectResponse, JSONResponse
 from starlette.middleware.cors import CORSMiddleware
 
 from .configs import app as APP
-from .resources import AVAILABLE_RESOURCES
-
-
-class MyGlobalResponse(JSONResponse):
-    def render(self, content: typing.Any) -> bytes:
-        return super().render({
-            "code": self.status_code,
-            "data": content,
-            "msg": "",
-        })
+from .exception_handlers import register_exception_handlers
+from .resources import register_resources
+from .responses._all import MyGlobalResponse
 
 
 def my_openapi(app):
@@ -76,10 +69,10 @@ def create_app(app_env='production') -> FastAPI:
     )
 
     # register all resources
-    for resource in AVAILABLE_RESOURCES:
-        app.include_router(resource.router)
+    register_resources(app)
 
     # register_api_doc(app)
+    register_exception_handlers(app)
 
     return app
 
