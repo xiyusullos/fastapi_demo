@@ -73,7 +73,8 @@ class ListAction(PluralAction):
         self.handle = self.repository.all
 
 
-class CreateAction(PluralAction):
+class CreateAction(SingleAction):
+    path = '/'
     method = 'POST'
     Transformer = OrmTransformer
 
